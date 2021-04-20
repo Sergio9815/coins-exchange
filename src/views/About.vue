@@ -79,7 +79,7 @@ a:hover {
 
 @media screen and (max-width: 600px) {
   .container--footer {
-    padding: 6px;
+    padding: 2px;
     flex-direction: column;
   }
 }

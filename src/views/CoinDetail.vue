@@ -92,6 +92,7 @@
           <td>{{ m.baseSymbol }} / {{ m.quoteSymbol }}</td>
           <td>
             <px-button
+              id="btn-px"
               :is-loading="m.isLoading || false"
               v-if="!m.url"
               @custom-click="getWebsite(m)"
@@ -230,5 +231,11 @@ td {
 
 tr {
   border-bottom: solid 1px rgba(0, 0, 0, 0.068);
+}
+
+@media (max-width: 840px) {
+  #btn-px {
+    display: none;
+  }
 }
 </style>

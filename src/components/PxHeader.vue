@@ -8,7 +8,9 @@
           <span>{{ 'Fecha' | date }}</span>
         </div>
         <div class="title-container flex items-center justify-center">
-          <router-link :to="{ name: 'home' }" class="uppercase text-3xl"
+          <router-link
+            :to="{ name: 'home' }"
+            class="uppercase text-2xl md:text-3xl"
             >Coins Exchange
           </router-link>
         </div>
