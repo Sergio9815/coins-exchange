@@ -1,7 +1,7 @@
 <template>
   <div class="flex-col">
     <div class="flex justify-center">
-      <bounce-loader :loading="isLoading" :color="'#68d391'" :size="100" />
+      <bar-loader :loading="isLoading" :color="'#000000'" :size="100" />
     </div>
     <template v-if="!isLoading">
       <div class="flex flex-col sm:flex-row justify-around items-center">
@@ -49,7 +49,7 @@
         <div class="my-10 sm:mt-0 flex flex-col justify-center text-center">
           <button
             @click="toggleConverter"
-            class="bg-green-500 hover:bg-green-700 text-white font-bold py-2 px-4 rounded"
+            class="bg-transparent border-black border hover:bg-black text-black hover:text-white font-bold py-2 px-4 rounded"
           >
             <span class="text-xl"
               >{{ convertResult }} {{ fromUsd ? asset.symbol : 'USD' }}</span
@@ -72,7 +72,7 @@
 
       <line-chart
         class="my-10"
-        :colors="['orange']"
+        :colors="['black']"
         :min="min"
         :max="max"
         :data="history.map((h) => [h.date, parseFloat(h.priceUsd).toFixed(2)])"
@@ -99,7 +99,7 @@
               <slot>Obtener Link</slot>
             </px-button>
 
-            <a v-else class="hover:underline text-green-600" target="_blanck">
+            <a v-else class="hover:underline text-black" target="_blanck">
               {{ m.url }}
             </a>
           </td>
@@ -218,8 +218,17 @@ export default {
 </script>
 
 <style scoped>
+* {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  letter-spacing: 3px;
+}
+
 td {
   padding: 10px;
   text-align: center;
+}
+
+tr {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.068);
 }
 </style>

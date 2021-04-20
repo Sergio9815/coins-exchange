@@ -1,26 +1,28 @@
 <template>
   <header class="shadow w-screen">
     <nav>
-      <nav class="flex items-center justify-between flex-wrap bg-green-400 p-6">
-        <div class="flex items-center flex-shrink-0 text-white mr-6">
-          <px-icon class="mr-3"></px-icon>
-          <router-link
-            :to="{ name: 'home' }"
-            class="font-semibold text-xl tracking-tight"
-            >Platzi Exchange
+      <nav
+        class="flex items-center justify-center flex-col flex-wrap text-black"
+      >
+        <div class="date-container flex items-center justify-end mt-5">
+          <span>{{ 'Fecha' | date }}</span>
+        </div>
+        <div class="title-container flex items-center justify-center">
+          <router-link :to="{ name: 'home' }" class="uppercase text-3xl"
+            >Coins Exchange
           </router-link>
         </div>
         <div
-          class="hidden sm:block blok flex-grow lg:flex lg:items-center lg:wauto"
+          class="hidden sm:block block flex-grow lg:flex lg:items-center lg:wauto"
         >
-          <div class="text-sm lg:flex-grow">
+          <div class="text-sm lg:flex-grow my-3">
             <router-link
               v-for="l in links"
               :key="l.title"
               :to="l.to"
-              class="block mt-4 lg:inline-block lg:mt-0 text-teal-200 hover:text-white mr-4"
+              class="block mt-4 sm:inline-block text-gray-600 hover:text-black lg:mt-0 mr-4"
             >
-              {{ l.title }}
+              {{ l.title }} |
             </router-link>
           </div>
         </div>
@@ -30,10 +32,8 @@
 </template>
 
 <script>
-import PxIcon from '@/components/PxIcon'
 export default {
   name: 'PxHeader',
-  components: { PxIcon },
 
   props: {
     links: {
@@ -43,3 +43,25 @@ export default {
   },
 }
 </script>
+
+<style scoped>
+* {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  letter-spacing: 3px;
+}
+
+nav {
+  background-color: #e9e2d0;
+}
+
+.title-container {
+  width: 90%;
+  height: 70px;
+  border-top: 3px solid rgba(0, 0, 0, 0.377);
+  border-bottom: 5px solid rgba(0, 0, 0, 0.726);
+}
+
+.date-container {
+  width: 90%;
+}
+</style>

@@ -1,7 +1,7 @@
 <template>
   <!-- v-bind:assets es igual que solo usar dos puntos asi :assets -->
   <div>
-    <hash-loader :loading="isLoading" :color="'#68d391'" :size="100" />
+    <bar-loader :loading="isLoading" :color="'#000000'" :size="100" />
 
     <px-assets-table v-if="!isLoading" :assets="assets" />
   </div>

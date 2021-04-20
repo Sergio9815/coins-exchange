@@ -2,9 +2,12 @@
   <div>
     <table>
       <thead>
-        <tr class="bg-gray-100 border-b-2 border-gray-400">
+        <tr class="border-b-2">
           <th></th>
-          <th :class="{ up: this.sortOrder === 1, down: this.sortOrder - 1 }">
+          <th
+            class="flex"
+            :class="{ up: this.sortOrder === 1, down: this.sortOrder - 1 }"
+          >
             <span class="underline cursor-pointer" @click="changeSortOrder"
               >Ranking</span
             >
@@ -15,7 +18,7 @@
           <th>Variación 24hs</th>
           <td class="hidden sm:block">
             <input
-              class="bg-gray-100 focus:outline-none border-b border-gray-400 py-2 px-4 block w-full appearance-none leading-normal"
+              class="bg-transparent placeholder-black focus:outline-none border-b border-black py-2 px-4 block w-full appearance-none leading-normal"
               id="filter"
               placeholder="Buscar..."
               type="text"
@@ -25,14 +28,10 @@
         </tr>
       </thead>
       <tbody>
-        <tr
-          v-for="a in filteredAssets"
-          :key="a.id"
-          class="border-b border-gray-200 hover:bg-gray-100 hover:bg-orange-100"
-        >
+        <tr v-for="a in filteredAssets" :key="a.id" class="border-b">
           <td>
             <img
-              class="w-6 h-6"
+              class="w-15 h-15 icon"
               :src="`https://static.coincap.io/assets/icons/${a.symbol.toLowerCase()}@2x.png`"
               :alt="a.name"
             />
@@ -42,7 +41,7 @@
           </td>
           <td>
             <router-link
-              class="hover:underline text-green-600"
+              class="hover:underline"
               :to="{ name: 'coin-detail', params: { id: a.id } }"
             >
               {{ a.name }}
@@ -54,8 +53,8 @@
           <td
             :class="
               parseInt(a.changePercent24Hr) > 0
-                ? 'text-green-600'
-                : 'text-red-600'
+                ? 'text-green-400'
+                : 'text-red-400'
             "
           >
             {{ a.changePercent24Hr | percent }}
@@ -126,14 +125,24 @@ export default {
 
 <style scoped>
 .up::before {
-  content: '👆';
+  content: '▲';
 }
 
 .down::before {
-  content: '👇';
+  content: '▼';
+}
+
+tr {
+  border-bottom: solid 1px rgba(0, 0, 0, 0.205);
+}
+
+tr:hover {
+  background-color: rgba(0, 0, 0, 0.082);
 }
 
 td {
+  font-family: 'Sawarabi Mincho', sans-serif;
+  letter-spacing: 3px;
   padding: 20px 0px;
   font-size: 0.6rem;
   text-align: center;
@@ -153,6 +162,12 @@ th {
 
   th {
     padding: 12px;
+  }
+}
+
+@media (max-width: 640px) {
+  .icon {
+    display: none;
   }
 }
 </style>
